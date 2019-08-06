@@ -35,9 +35,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         currentGame = pickNewGame()
         // Do any additional setup after loading the view.
     }
+
     //define a method from the delegate protocol that DOES SOMETHING when i hit enter
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("return")
+        if let inputText = inputTextField.text {
+            let result = currentGame?.verifyGuess(guess: inputText) ?? false
+            if result {
+                userGuessMessageLabel.text = "correct"
+                addAnswerToTextView(answer: inputText)
+            } else {
+                userGuessMessageLabel.text = "incorrect guess never give up"
+            }
+        }
         return true
     }
     
