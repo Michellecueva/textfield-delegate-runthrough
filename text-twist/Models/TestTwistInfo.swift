@@ -8,8 +8,13 @@
 
 import Foundation
 
-struct TestTwistInfo {
-    let wordCount: Int
+protocol SomethingWithAWordCount {
+    var wordCount: Int {get set}
+}
+
+struct TestTwistInfo: SomethingWithAWordCount {
+    var wordCount: Int
+    
     let letters: String
     let words: [String]
 }
