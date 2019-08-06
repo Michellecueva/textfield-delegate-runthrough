@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    var currentGame: TestTwistInfo? {
+        didSet {
+            showAvailableLettersLabel.text = self.currentGame?.letters
+        }
+    }
     
     @IBOutlet weak var showAvailableLettersLabel: UILabel!
     @IBOutlet weak var userGuessMessageLabel: UILabel!
@@ -27,6 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextField.delegate = self
+        currentGame = pickNewGame()
         // Do any additional setup after loading the view.
     }
     //define a method from the delegate protocol that DOES SOMETHING when i hit enter
