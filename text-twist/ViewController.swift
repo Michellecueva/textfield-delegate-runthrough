@@ -69,13 +69,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func addAnswerToTextView(answer: String) {
         switch answer.count {
         case 3:
-            threeLettersTextView.text.append(answer)
+            threeLettersTextView.text.append("\(answer)\n")
         case 4:
-            fourLettersTextView.text.append(answer)
+            fourLettersTextView.text.append("\(answer)\n")
         case 5:
-            fiveLettersTextView.text.append(answer)
+            fiveLettersTextView.text.append("\(answer)\n")
         case 6:
-            sixLettersTextView.text.append(answer)
+            sixLettersTextView.text.append("\(answer)\n")
         default:
             print("oh well")
         }
