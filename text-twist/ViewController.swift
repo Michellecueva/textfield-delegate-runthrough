@@ -49,6 +49,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        //what is the argument string? it's whatever we've typed into the text field.
+        if (currentGame?.letters.contains(string) ?? false) || string == ""  {
+            return true
+        } else {
+            return false
+        }
+        //look through the letters and see if the last input matched them
+        //if the last letter that was typed is not in arrayLetters, it should not appear
+    }
     
     private func pickNewGame() -> TestTwistInfo {
         return WordData.getGameInfo()
