@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     //define a method from the delegate protocol that DOES SOMETHING when i hit enter
