@@ -40,5 +40,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("return")
         return true
     }
+    
+    private func pickNewGame() -> TestTwistInfo {
+        return WordData.getGameInfo()
+    }
+
+    private func addAnswerToTextView(answer: String) {
+        switch answer.count {
+        case 3:
+            threeLettersTextView.text.append(answer)
+        case 4:
+            fourLettersTextView.text.append(answer)
+        case 5:
+            fiveLettersTextView.text.append(answer)
+        case 6:
+            sixLettersTextView.text.append(answer)
+        default:
+            print("oh well")
+        }
+    }
 }
 
