@@ -101,10 +101,9 @@
 		54600C1622F9CB670021D7B7 /* text-twist */ = {
 			isa = PBXGroup;
 			children = (
-				54600C4922F9CE370021D7B7 /* TestTwistInfo.swift */,
+				54600C4B22F9D3C20021D7B7 /* Models */,
 				54600C1722F9CB670021D7B7 /* AppDelegate.swift */,
 				54600C1922F9CB670021D7B7 /* ViewController.swift */,
-				54600C4722F9CDB50021D7B7 /* WordData.swift */,
 				54600C1B22F9CB670021D7B7 /* Main.storyboard */,
 				54600C1E22F9CB670021D7B7 /* Assets.xcassets */,
 				54600C2022F9CB670021D7B7 /* LaunchScreen.storyboard */,
@@ -129,6 +128,15 @@
 				54600C3922F9CB680021D7B7 /* Info.plist */,
 			);
 			path = "text-twistUITests";
+			sourceTree = "<group>";
+		};
+		54600C4B22F9D3C20021D7B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54600C4922F9CE370021D7B7 /* TestTwistInfo.swift */,
+				54600C4722F9CDB50021D7B7 /* WordData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
