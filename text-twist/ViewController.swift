@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var inputTextField: UITextField!
@@ -17,7 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    //define a method from the delegate protocol that DOES SOMETHING when i hit enter
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("return")
+        return true
+    }
 }
 
