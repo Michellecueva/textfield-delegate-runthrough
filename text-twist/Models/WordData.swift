@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct WordData {
+class WordData {
     //   static constant -> WordData.allInfo
     static let allInfo: [TestTwistInfo] = [
         TestTwistInfo(wordCount: 27,
@@ -22,4 +22,7 @@ struct WordData {
                       letters: "hisswy",
                       words: ["swishy", "hissy","swish", "hiss","whys","wish","wiss","ywis", "his","shy","sis","why","wis"])
     ]
+    static func getGameInfo() -> TestTwistInfo {
+        return allInfo.randomElement()!
+    }
 }
