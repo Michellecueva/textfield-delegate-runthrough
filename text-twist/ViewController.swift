@@ -57,6 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //define a method from the delegate protocol that DOES SOMETHING when i hit enter
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let inputText = inputTextField.text {
+            
             let result = currentGame?.verifyGuess(guess: inputText) ?? false
             if result {
                 userGuessMessageLabel.text = "correct"
@@ -75,12 +76,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let newString = text.replacingCharacters(in: textRange, with: string)
             if newString.count < text.count || newString == "" {
                print(newString)
+               
                 userGuessMessageLabel.text = ""
+                
+
             }
         }
 
         //what is the argument string? it's whatever we've typed into the text field.
         if (currentGame?.letters.contains(string) ?? false) || string == ""  {
+            checkLetters(inputText: string)
            return true
         } else {
             userGuessMessageLabel.text = "Cannot use the letter \(string)"
@@ -139,6 +144,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
            
         }
     }
+    
+    func checkLetters(inputText: String ) -> String {
+        if let currentWord = (currentGame?.letters.contains(inputText)){ //safe unwrap
+            switch currentWord {
+            case true:
+                if let index = showAvailableLettersLabel.text?.firstIndex(of: Character(inputText)) {
+                    showAvailableLettersLabel.text?.remove(at: index)
+                }
+                
+            case false:
+                showAvailableLettersLabel.text = currentGame?.letters
+                
+            }
+            
+            
+        }
+        return showAvailableLettersLabel.text!
+        
+    }
+    
     
    
 }

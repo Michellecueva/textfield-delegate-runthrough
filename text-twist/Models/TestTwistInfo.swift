@@ -14,7 +14,7 @@ protocol SomethingWithAWordCount {
 
 struct TestTwistInfo: SomethingWithAWordCount {
     var wordCount: Int
-    let letters: String
+    var letters: String
     let words: [String]
     var letterDictionary: [Character: Int]
     var count: Int
