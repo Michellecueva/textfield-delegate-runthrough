@@ -60,13 +60,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of1-H8-bok">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of1-H8-bok">
                                 <rect key="frame" x="59" y="232" width="285" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcs-FB-IA3">
+                                <rect key="frame" x="192" y="713" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="Resets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L4f-fA-U5w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -75,6 +83,7 @@
                         <outlet property="fiveLettersTextView" destination="ewB-tf-az3" id="Ilr-SA-4X7"/>
                         <outlet property="fourLettersTextView" destination="8DV-AG-64Y" id="8xB-db-VYZ"/>
                         <outlet property="inputTextField" destination="YM2-PY-vDC" id="nk0-x5-8sK"/>
+                        <outlet property="resetButton" destination="Wcs-FB-IA3" id="ag7-yp-S2j"/>
                         <outlet property="showAvailableLettersLabel" destination="sGU-SH-4uM" id="eXz-QL-XOU"/>
                         <outlet property="sixLettersTextView" destination="hxs-49-gzc" id="nhw-Hz-RGC"/>
                         <outlet property="threeLettersTextView" destination="aT7-6w-X9I" id="Ngi-vf-kVA"/>

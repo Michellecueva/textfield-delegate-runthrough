@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var currentGame: TestTwistInfo? {
         didSet {
             showAvailableLettersLabel.text = self.currentGame?.letters
+            
         }
     }
     
@@ -29,13 +30,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var sixLettersTextView: UITextView!
     
+    
+    @IBOutlet weak var resetButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextField.delegate = self
         currentGame = pickNewGame()
+        resetButton.isHidden = true
+        
         // Do any additional setup after loading the view.
     }
 
+   
+    @IBAction func Resets(_ sender: UIButton) {
+        resetButton.isHidden = true
+        inputTextField.isEnabled = true
+        currentGame = pickNewGame()
+        userGuessMessageLabel.text = ""
+        inputTextField.text = ""
+        threeLettersTextView.text = ""
+        fourLettersTextView.text = ""
+        fiveLettersTextView.text = ""
+        sixLettersTextView.text = ""
+    }
     //define a method from the delegate protocol that DOES SOMETHING when i hit enter
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let inputText = inputTextField.text {
@@ -44,22 +62,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 userGuessMessageLabel.text = "correct"
                 addAnswerToTextView(answer: inputText)
             } else {
-                userGuessMessageLabel.text = "incorrect guess never give up"
+                userGuessMessageLabel.text = "incorrect guess "
             }
         }
         return true
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+        userGuessMessageLabel.text = ""
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let newString = text.replacingCharacters(in: textRange, with: string)
+            if newString.count < text.count || newString == "" {
+               print(newString)
+                userGuessMessageLabel.text = ""
+            }
+        }
+
         //what is the argument string? it's whatever we've typed into the text field.
         if (currentGame?.letters.contains(string) ?? false) || string == ""  {
-            return true
+           return true
         } else {
-            return false
+            userGuessMessageLabel.text = "Cannot use the letter \(string)"
+          return false
         }
+        
+        
         //look through the letters and see if the last input matched them
         //if the last letter that was typed is not in arrayLetters, it should not appear
+      
     }
     
     private func pickNewGame() -> TestTwistInfo {
@@ -69,16 +100,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func addAnswerToTextView(answer: String) {
         switch answer.count {
         case 3:
-            threeLettersTextView.text.append("\(answer)\n")
+            if !threeLettersTextView.text.contains(answer){
+                threeLettersTextView.text.append("\(answer)\n")
+                currentGame?.addToCount()
+                
+                
+            } else {
+                userGuessMessageLabel.text = "Already Guessed. Try again!"
+            }
         case 4:
-            fourLettersTextView.text.append("\(answer)\n")
+            if !fourLettersTextView.text.contains(answer){
+                fourLettersTextView.text.append("\(answer)\n")
+                currentGame?.addToCount()
+            } else {
+                userGuessMessageLabel.text = "Already Guessed. Try again!"
+            }
         case 5:
-            fiveLettersTextView.text.append("\(answer)\n")
+            if !fiveLettersTextView.text.contains(answer){
+                fiveLettersTextView.text.append("\(answer)\n")
+                currentGame?.addToCount()
+            } else {
+                userGuessMessageLabel.text = "Already Guessed. Try again!"
+            }
         case 6:
-            sixLettersTextView.text.append("\(answer)\n")
+            if !sixLettersTextView.text.contains(answer){
+                sixLettersTextView.text.append("\(answer)\n")
+                currentGame?.addToCount()
+            } else {
+                userGuessMessageLabel.text = "Already Guessed. Try again!"
+            }
         default:
             print("oh well")
         }
+        if currentGame?.count == currentGame?.wordCount {
+            userGuessMessageLabel.text = "Congrats! You got them all!"
+            inputTextField.isEnabled = false
+            resetButton.isHidden = false
+           
+        }
     }
+    
+   
 }
 

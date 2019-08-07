@@ -16,8 +16,17 @@ struct TestTwistInfo: SomethingWithAWordCount {
     var wordCount: Int
     let letters: String
     let words: [String]
+    var letterDictionary: [Character: Int]
+    var count: Int
+    
     
     func verifyGuess(guess: String) -> Bool {
         return words.contains(guess)
     }
+    
+    mutating func addToCount() {
+        count += 1
+    }
+    
+   
 }
