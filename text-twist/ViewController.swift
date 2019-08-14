@@ -74,10 +74,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let text = textField.text,
             let textRange = Range(range, in: text) {
             let newString = text.replacingCharacters(in: textRange, with: string)
+           
             if newString.count < text.count || newString == "" {
                print(newString)
-               
-                userGuessMessageLabel.text = ""
+                if let newStringLast = newString.last {
+                    showAvailableLettersLabel.text = String(newStringLast)
+//                    checkLetters(inputText: String(newStringLast))
+                }
+        
                 
 
             }
@@ -86,6 +90,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //what is the argument string? it's whatever we've typed into the text field.
         if (currentGame?.letters.contains(string) ?? false) || string == ""  {
             checkLetters(inputText: string)
+            
            return true
         } else {
             userGuessMessageLabel.text = "Cannot use the letter \(string)"
